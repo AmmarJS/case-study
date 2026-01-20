@@ -1,0 +1,273 @@
+.side-menu-container {
+  flex: 4;
+  display: flex;
+  align-items: center;
+  background: #0e1010;
+  position: relative;
+}
+
+.bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-110%, -50%);
+  pointer-events: none;
+  z-index: 0;
+
+  background: radial-gradient(
+    circle,
+    rgba(155, 145, 135, 0.18) 0%,
+    rgba(155, 145, 135, 0.12) 25%,
+    rgba(18, 18, 18, 0.85) 53%,
+    #0e1010 58%
+  );
+}
+
+.glow-clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.control-panel,
+.list {
+  position: relative;
+  z-index: 1;
+}
+
+.control-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-button {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-button::before {
+  content: "";
+  position: absolute;
+  inset: -15px;
+  background: #0e1010;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.action-button::after {
+  content: "";
+  width: 20px;
+  height: 160px;
+  position: absolute;
+  inset: 0;
+  background: #0e1010;
+  border-radius: 30%;
+  z-index: -1;
+  left: 51%;
+  top: -25px;
+}
+
+.next-btn {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 2px solid #9b9187;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(155, 145, 135, 0.35) 0%,
+    rgba(155, 145, 135, 0.18) 90%,
+    #0e1010 70%
+  );
+  cursor: pointer;
+}
+
+.next-arrow {
+  width: 24px;
+  height: 24px;
+  border-right: 3px solid #9b9187;
+  border-bottom: 3px solid #9b9187;
+  transform: rotate(45deg);
+  margin-top: -6px;
+}
+
+.seperator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.list {
+  padding-bottom: 2rem;
+  flex: 1;
+  height: 448px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.first-item-clip {
+  position: absolute;
+  background-color: #0e1010;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 1;
+}
+
+.side-menu-title {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 36px;
+  line-height: 46px;
+  letter-spacing: 0%;
+}
+
+.side-menu-title span {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 36px;
+  line-height: 46px;
+  letter-spacing: 0%;
+}
+
+h1.side-menu-title {
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+}
+
+.list-inner {
+  width: 100%;
+  height: 416px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: transform 0.6s ease;
+}
+
+.list-item {
+  width: 100%;
+  min-height: 80px;
+  max-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  opacity: 0.35;
+  transform: scale(0.92);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.list-item.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.list-item p {
+  margin: 0;
+  user-select: none;
+  text-align: center;
+}
+
+.list-item-title {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.list-item-desc {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.gprev.gbtn {
+  display: none;
+}
+.gnext.gbtn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .side-menu-container {
+    max-height: 400px;
+    flex-direction: column-reverse;
+  }
+
+  .control-panel {
+    flex: 1;
+  }
+
+  .next-btn {
+    width: 71px;
+    height: 71px;
+  }
+
+  .bg-glow {
+    left: 135%;
+    top: 127%;
+  }
+
+  .list-inner {
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+    width: max-content;
+  }
+
+  .list {
+    padding: 0;
+    width: 100%;
+    min-height: 100px;
+    justify-content: flex-start;
+  }
+
+  .list-item {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 100%;
+  }
+
+  .list-item.active {
+    transform: scale(1);
+  }
+
+  .next-arrow {
+    width: 12px;
+    height: 12px;
+    transform: rotate(-45deg);
+    margin-top: 0px;
+    margin-right: 6px;
+  }
+
+  .action-button {
+    right: 137px;
+    bottom: -36px;
+  }
+
+  .action-button::after {
+    transform: rotate(-90deg);
+    left: 33%;
+    top: -28px;
+    height: 129px;
+  }
+}
